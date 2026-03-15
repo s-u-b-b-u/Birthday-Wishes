@@ -1,0 +1,75 @@
+@import "tailwindcss";
+
+@theme {
+  --color-warm-50: #fffcf5;
+  --color-warm-100: #fff9e6;
+  --color-warm-200: #ffefc2;
+  --color-warm-300: #ffe18f;
+  --color-warm-400: #ffca52;
+  --color-warm-500: #ffaa1a;
+  --color-warm-600: #e68a00;
+  --color-warm-700: #bf6a00;
+  --color-warm-800: #995100;
+  --color-warm-900: #7d4300;
+  
+  --font-display: "Playfair Display", serif;
+  --font-sans: "Inter", sans-serif;
+}
+
+:root {
+  background-color: #09090b; /* zinc-950 */
+  color: #f4f4f5; /* zinc-100 */
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-sans);
+  background-color: #09090b;
+}
+
+h1, h2, h3, .font-display {
+  font-family: var(--font-display);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #09090b;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ffaa1a; /* warm-500 */
+  border-radius: 10px;
+}
+
+/* Premium Shadows */
+.shadow-premium {
+  box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.5);
+}
+
+.premium-blur {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Lock Overlay */
+.lock-blur {
+  backdrop-filter: blur(25px);
+  background: rgba(9, 9, 11, 0.6);
+}
+
+/* Animations */
+@keyframes pulse-warm {
+  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.4); }
+  70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(245, 158, 11, 0); }
+  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(245, 158, 11, 0); }
+}
+
+.pulse-animation {
+  animation: pulse-warm 2s infinite;
+}
