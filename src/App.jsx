@@ -14,6 +14,7 @@ import {
   Sparkles
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
+import memoriesSong from './assets/gallery/Memories-Bring-Back.mp3';
 
 // Assets from gallery folder
 import m1 from './assets/gallery/m1.jpeg';
@@ -154,7 +155,7 @@ const App = () => {
   return (
     <div className="bg-zinc-950 min-h-screen text-zinc-100 selection:bg-warm-500 selection:text-white font-sans">
       {/* Background Audio */}
-      <audio ref={audioRef} loop src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" />
+      <audio ref={audioRef} loop src={memoriesSong} />
 
       <section ref={heroRef} className="py-24 md:py-32 flex flex-col items-center justify-center min-h-screen px-6 overflow-hidden">
         {/* Top Header Section */}
