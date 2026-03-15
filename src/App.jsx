@@ -3,6 +3,7 @@ import { motion, AnimatePresence, useScroll, useSpring, useInView, useTransform 
 import {
   Lock,
   Volume2,
+  VolumeX,
   Heart,
   ChevronRight,
   ChevronLeft,
@@ -93,6 +94,7 @@ const App = () => {
   const [quizAnswers, setQuizAnswers] = useState({ q1: "", q2: "", q3: "" });
   const [quizStatus, setQuizStatus] = useState("idle");
   const [activeVideo, setActiveVideo] = useState(null);
+  const [isMuted, setIsMuted] = useState(false);
 
   const heroRef = useRef(null);
   const audioRef = useRef(null);
@@ -135,21 +137,26 @@ const App = () => {
   // Global Interaction Kickstart for Audio
   useEffect(() => {
     const kickstartAudio = () => {
-      if (isHeroInView && !document.hidden) {
-        audioRef.current?.play().catch(() => { });
+      if (audioRef.current && !isMuted) {
+        audioRef.current.play().catch(() => {
+          console.log("Autoplay blocked, waiting for interaction.");
+        });
         document.removeEventListener("click", kickstartAudio);
+        document.removeEventListener("scroll", kickstartAudio);
         document.removeEventListener("touchstart", kickstartAudio);
       }
     };
 
     document.addEventListener("click", kickstartAudio);
+    document.addEventListener("scroll", kickstartAudio);
     document.addEventListener("touchstart", kickstartAudio);
 
     return () => {
       document.removeEventListener("click", kickstartAudio);
+      document.removeEventListener("scroll", kickstartAudio);
       document.removeEventListener("touchstart", kickstartAudio);
     };
-  }, [isHeroInView]);
+  }, [isMuted]);
 
   const handleQuizSubmit = (e) => {
     e.preventDefault();
@@ -177,14 +184,29 @@ const App = () => {
 
   return (
     <div className="bg-zinc-950 min-h-screen text-zinc-100 selection:bg-warm-500 selection:text-white font-sans">
-      {/* Background Audio - Preloaded for immediate playback */}
+      {/* Background Audio */}
       <audio 
         ref={audioRef} 
         loop 
         preload="auto"
-        autoPlay
+        muted={isMuted}
         src={memoriesSong} 
       />
+
+      {/* Music Toggle Control */}
+      <motion.button
+        initial={{ opacity: 0, scale: 0.5 }}
+        animate={{ opacity: 1, scale: 1 }}
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}
+        onClick={() => setIsMuted(!isMuted)}
+        className="fixed bottom-12 right-12 z-[200] bg-white/10 backdrop-blur-2xl border border-white/20 p-6 rounded-full text-white shadow-2xl group"
+      >
+        {isMuted ? <VolumeX size={28} className="text-zinc-500" /> : <Volume2 size={28} className="text-warm-500 animate-pulse" />}
+        <div className="absolute bottom-full right-0 mb-4 bg-zinc-900 px-4 py-2 rounded-xl text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap border border-white/10 pointer-events-none">
+          {isMuted ? "Play Memories" : "Mute Music"}
+        </div>
+      </motion.button>
 
       <section ref={heroRef} className="py-24 md:py-32 flex flex-col items-center justify-center min-h-screen px-6 overflow-hidden">
         {/* Top Header Section */}
