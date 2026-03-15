@@ -128,6 +128,25 @@ const App = () => {
     };
   }, [isHeroInView]);
 
+  // Global Interaction Kickstart for Audio
+  useEffect(() => {
+    const kickstartAudio = () => {
+      if (isHeroInView && !document.hidden) {
+        audioRef.current?.play().catch(() => { });
+        document.removeEventListener("click", kickstartAudio);
+        document.removeEventListener("touchstart", kickstartAudio);
+      }
+    };
+
+    document.addEventListener("click", kickstartAudio);
+    document.addEventListener("touchstart", kickstartAudio);
+
+    return () => {
+      document.removeEventListener("click", kickstartAudio);
+      document.removeEventListener("touchstart", kickstartAudio);
+    };
+  }, [isHeroInView]);
+
   const handleQuizSubmit = (e) => {
     e.preventDefault();
     if (
@@ -154,8 +173,14 @@ const App = () => {
 
   return (
     <div className="bg-zinc-950 min-h-screen text-zinc-100 selection:bg-warm-500 selection:text-white font-sans">
-      {/* Background Audio */}
-      <audio ref={audioRef} loop src={memoriesSong} />
+      {/* Background Audio - Preloaded for immediate playback */}
+      <audio 
+        ref={audioRef} 
+        loop 
+        preload="auto"
+        autoPlay
+        src={memoriesSong} 
+      />
 
       <section ref={heroRef} className="py-24 md:py-32 flex flex-col items-center justify-center min-h-screen px-6 overflow-hidden">
         {/* Top Header Section */}
