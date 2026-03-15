@@ -111,19 +111,19 @@ const App = () => {
     return () => clearInterval(timer);
   }, [isHeroInView]);
 
-  // Handle Hero Music & Page Visibility
+  // Handle Global Background Music & Page Visibility
   useEffect(() => {
     const handleVisibilityChange = () => {
-      if (document.hidden) {
+      if (document.hidden || activeVideo || isMuted) {
         audioRef.current?.pause();
-      } else if (isHeroInView) {
+      } else {
         audioRef.current?.play().catch(() => { });
       }
     };
 
     document.addEventListener("visibilitychange", handleVisibilityChange);
 
-    if (isHeroInView && !document.hidden) {
+    if (!document.hidden && !activeVideo && !isMuted) {
       audioRef.current?.play().catch(() => { });
     } else {
       audioRef.current?.pause();
@@ -132,12 +132,12 @@ const App = () => {
     return () => {
       document.removeEventListener("visibilitychange", handleVisibilityChange);
     };
-  }, [isHeroInView]);
+  }, [activeVideo, isMuted]);
 
   // Global Interaction Kickstart for Audio
   useEffect(() => {
     const kickstartAudio = () => {
-      if (audioRef.current && !isMuted) {
+      if (audioRef.current && !isMuted && !activeVideo) {
         audioRef.current.play().catch(() => {
           console.log("Autoplay blocked, waiting for interaction.");
         });
@@ -156,7 +156,7 @@ const App = () => {
       document.removeEventListener("scroll", kickstartAudio);
       document.removeEventListener("touchstart", kickstartAudio);
     };
-  }, [isMuted]);
+  }, [isMuted, activeVideo]);
 
   const handleQuizSubmit = (e) => {
     e.preventDefault();
