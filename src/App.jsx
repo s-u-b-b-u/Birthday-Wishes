@@ -239,7 +239,6 @@ const App = () => {
               </div>
             ))}
           </div>
-
           {/* Story Images - Cinematic Transitions */}
           <AnimatePresence mode="wait">
             <motion.div
