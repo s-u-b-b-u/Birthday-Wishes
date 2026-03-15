@@ -41,6 +41,12 @@ import v5 from './assets/gallery/v5.mp4';
 import w1 from './assets/gallery/w1.mp4';
 import w2 from './assets/gallery/w2.mp4';
 import w3 from './assets/gallery/w3.mp4';
+import w4 from './assets/gallery/w4.mp4';
+import w5 from './assets/gallery/w5.mp4';
+import w6 from './assets/gallery/w6.mp4';
+import w7 from './assets/gallery/w7.mp4';
+import w8 from './assets/gallery/w8.mp4';
+import w9 from './assets/gallery/w9.mp4';
 
 const initialPhotos = [m1, m2, m3, m4, m5, m6, m7, m8, m9, m10, m11, m12, m13, m14, m15, m16];
 
@@ -76,6 +82,12 @@ const vaultVideos = [
   { src: w1, title: "A Special Fragment", desc: "Captured in the silence of the vault." },
   { src: w2, title: "Heartfelt Wishes", desc: "A second layer of the archive revealed." },
   { src: w3, title: "Timeless Connection", desc: "The final chapter of the vault's chronicles." },
+  { src: w4, title: "Echoes of Love", desc: "A whisper from the inner circle." },
+  { src: w5, title: "Pure Joy", desc: "Unfiltered celebration of Baba's day." },
+  { src: w6, title: "A Legacy Shared", desc: "Shared moments in high fidelity." },
+  { src: w7, title: "Voices from Afar", desc: "Distance means nothing to true bonds." },
+  { src: w8, title: "Grand Finale", desc: "The crescendo of the secret archive." },
+  { src: w9, title: "Eternal Baba", desc: "The timeless essence of greatness." },
 ];
 
 const App = () => {
@@ -128,8 +140,8 @@ const App = () => {
     e.preventDefault();
     if (
       quizAnswers.q1.toLowerCase().includes("lover") &&
-      quizAnswers.q2.toLowerCase().includes("debug") &&
-      quizAnswers.q3.length > 0
+      quizAnswers.q2.toLowerCase().includes("andaman") &&
+      quizAnswers.q3.toLowerCase().includes("eny sarlu") || quizAnswers.q3.toLowerCase().includes("eni sarlu")
     ) {
       setQuizStatus("success");
       setTimeout(() => {
@@ -441,9 +453,9 @@ const App = () => {
 
               <form onSubmit={handleQuizSubmit} className="space-y-8">
                 {[
-                  { label: "Who are you to Subbu?", id: "q1", hint: "Secret Designation" },
-                  { label: "3 AM coding session?", id: "q2", hint: "The Grind" },
-                  { label: "Your given name?", id: "q3", hint: "True Identity" }
+                  { label: "Who are you to Subbu?", id: "q1", hint: "L_v_r" },
+                  { label: "what is the place we have decided to visit after b.tech?", id: "q2", hint: "A_d_man..." },
+                  { label: "Madda Gudu", id: "q3", hint: "E_i s_rlu..." }
                 ].map((q) => (
                   <div key={q.id}>
                     <label className="block text-xs font-black text-zinc-400 uppercase tracking-widest mb-3">{q.label}</label>
