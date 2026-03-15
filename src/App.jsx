@@ -69,15 +69,6 @@ const videos = [
   { src: v5, title: "The Greatest Batsman", desc: "G.O.A.T" },
   { src: v4, title: "Baba kaalu ethi em chesadu?????...", desc: "Theliyalante ee video choodandi" }
 ];
-const audioWishes = [
-  { name: "Aria", img: m1 },
-  { name: "Leo", img: m2 },
-  { name: "Sia", img: m3 },
-  { name: "Zane", img: m4 },
-  { name: "Nora", img: m5 },
-  { name: "Kai", img: m6 },
-];
-
 const vaultVideos = [
   { src: w1, title: "A Special Fragment", desc: "Captured in the silence of the vault." },
   { src: w2, title: "Heartfelt Wishes", desc: "A second layer of the archive revealed." },
@@ -353,37 +344,8 @@ const App = () => {
             animate={{ opacity: 1, scale: 1 }}
             className="max-w-7xl mx-auto"
           >
-            <div className="text-center mb-24">
-              <h2 className="text-6xl md:text-9xl font-display font-black text-warm-900 leading-none mb-12">Voices.</h2>
-              <p className="text-warm-700 text-2xl italic font-serif opacity-80">"You are the sum of the people who love you."</p>
-            </div>
-
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-12">
-              {audioWishes.map((wish, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: i * 0.1 }}
-                  whileHover={{ scale: 1.05 }}
-                  className="flex flex-col items-center group cursor-pointer"
-                >
-                  <div className="relative mb-6">
-                    <div className="absolute inset-0 bg-warm-500 rounded-full blur-2xl opacity-0 group-hover:opacity-40 transition-opacity" />
-                    <div className="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden border-[10px] border-white shadow-xl relative z-10">
-                      <img src={wish.img} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-                    </div>
-                    <div className="absolute -bottom-2 -right-2 bg-warm-500 p-4 rounded-full text-white shadow-2xl z-20 group-hover:bg-zinc-900 transition-colors">
-                      <Volume2 size={24} />
-                    </div>
-                  </div>
-                  <span className="text-xl font-black text-zinc-900 tracking-tight uppercase">{wish.name}</span>
-                </motion.div>
-              ))}
-            </div>
-
             {/* Vaulted Video Memories */}
-            <div className="mt-40">
+            <div className="">
               <h3 className="text-4xl md:text-6xl font-display font-black text-warm-900 mb-16 text-center">Vaulted Memories.</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-5xl mx-auto">
                 {vaultVideos.map((vid, i) => (
