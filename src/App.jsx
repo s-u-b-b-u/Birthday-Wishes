@@ -39,6 +39,7 @@ import v2 from './assets/gallery/v2.mp4';
 import v3 from './assets/gallery/v3.mp4';
 import v4 from './assets/gallery/v4.mp4';
 import v5 from './assets/gallery/v5.mp4';
+import v6 from './assets/gallery/v6.mp4';
 import w1 from './assets/gallery/w1.mp4';
 import w2 from './assets/gallery/w2.mp4';
 import w3 from './assets/gallery/w3.mp4';
@@ -68,7 +69,8 @@ const videos = [
   { src: v2, title: "The Best Moments", desc: "Laughter, debates, and everything in between." },
   { src: v3, title: "The memories of school trip", desc: "A deeper look into the timeless memories." },
   { src: v5, title: "The Greatest Batsman", desc: "G.O.A.T" },
-  { src: v4, title: "Baba kaalu ethi em chesadu?????...", desc: "Theliyalante ee video choodandi" }
+  { src: v4, title: "Baba kaalu ethi em chesadu?????...", desc: "Theliyalante ee video choodandi" },
+  { src: v6, title: "Final Chapter: The Celebration", desc: "Wrapping up a legendary year with style." }
 ];
 const vaultVideos = [
   { src: w1, title: "A Special Fragment", desc: "Captured in the silence of the vault." },
