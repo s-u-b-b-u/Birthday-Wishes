@@ -40,6 +40,7 @@ import v3 from './assets/gallery/v3.mp4';
 import v4 from './assets/gallery/v4.mp4';
 import v5 from './assets/gallery/v5.mp4';
 import v6 from './assets/gallery/v6.mp4';
+import w0 from './assets/gallery/w0.mp4';
 import w1 from './assets/gallery/w1.mp4';
 import w2 from './assets/gallery/w2.mp4';
 import w3 from './assets/gallery/w3.mp4';
@@ -82,6 +83,7 @@ const vaultVideos = [
   { src: w7, title: "Voices from Afar", desc: "Distance means nothing to true bonds." },
   { src: w8, title: "Grand Finale", desc: "The crescendo of the secret archive." },
   { src: w9, title: "Eternal Baba", desc: "The timeless essence of greatness." },
+  { src: w0, title: "The Ultimate Wish", desc: "The final piece of the legend's puzzle." },
 ];
 
 const App = () => {
