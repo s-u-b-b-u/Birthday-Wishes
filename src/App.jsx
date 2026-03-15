@@ -39,6 +39,8 @@ import v3 from './assets/gallery/v3.mp4';
 import v4 from './assets/gallery/v4.mp4';
 import v5 from './assets/gallery/v5.mp4';
 import w1 from './assets/gallery/w1.mp4';
+import w2 from './assets/gallery/w2.mp4';
+import w3 from './assets/gallery/w3.mp4';
 
 const initialPhotos = [m1, m2, m3, m4, m5, m6, m7, m8, m9, m10, m11, m12, m13, m14, m15, m16];
 
@@ -72,6 +74,8 @@ const audioWishes = [
 
 const vaultVideos = [
   { src: w1, title: "A Special Fragment", desc: "Captured in the silence of the vault." },
+  { src: w2, title: "Heartfelt Wishes", desc: "A second layer of the archive revealed." },
+  { src: w3, title: "Timeless Connection", desc: "The final chapter of the vault's chronicles." },
 ];
 
 const App = () => {
